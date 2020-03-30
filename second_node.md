@@ -28,4 +28,28 @@ JVB_PORT=5347
 # sets the shared secret used to authenticate to the XMPP server
 JVB_SECRET=password1
 ```
-
+## configurazione di OGNI altro nodo videobridge
+Nel file `/etc/jitsi/videobridge/sip-communicator.properties`
+```
+org.jitsi.videobridge.DISABLE_TCP_HARVESTER=true
+org.jitsi.videobridge.ENABLE_STATISTICS=true
+org.jitsi.videobridge.STATISTICS_TRANSPORT=muc
+org.jitsi.videobridge.xmpp.user.shard.HOSTNAME= IP del "master"
+org.jitsi.videobridge.xmpp.user.shard.DOMAIN=auth.jitsi-vdb01.cedrc.cnr.it
+org.jitsi.videobridge.xmpp.user.shard.USERNAME=jvb
+org.jitsi.videobridge.xmpp.user.shard.PASSWORD=password1 (la stessa di prima)
+org.jitsi.videobridge.xmpp.user.shard.MUC_JIDS=JvbBrewery@internal.auth.jitsi-vdb01.cedrc.cnr.it
+org.jitsi.videobridge.xmpp.user.shard.MUC_NICKNAME=vdb02
+org.jitsi.videobridge.xmpp.user.shard.DISABLE_CERTIFICATE_VERIFICATION=true
+```
+Nel file `/etc/jitsi/videobridge/config`
+```
+# sets the XMPP domain (default: none)
+JVB_HOSTNAME=jitsi-vdb02.cedrc.cnr.it
+# sets the hostname of the XMPP server (default: domain if set, localhost otherwise)
+JVB_HOST=
+# sets the port of the XMPP server (default: 5275)
+JVB_PORT=5347
+# sets the shared secret used to authenticate to the XMPP server
+JVB_SECRET=password1
+```
