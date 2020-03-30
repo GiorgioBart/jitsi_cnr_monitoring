@@ -12,6 +12,8 @@ I client verranno disconnessi e apparirà un messaggio di prossima riconnessione
 Passati alcuni secondi (circa 20) il client viene riconnesso e, uno alla volta, ricompaiono tutti i video dei partecipanti.
 ATTENZIONE: non è immediata ma converge.
 
+![HA](HA.png "HA")
+
 ## configurazione del nodo MASTER
 
 Nel file `/etc/jitsi/videobridge/sip-communicator.properties`
