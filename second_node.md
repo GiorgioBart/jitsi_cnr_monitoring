@@ -1,6 +1,16 @@
 # Mini guida per aggiungere un nodo a jitsi
-Con la nuova versione si passa ad una configurazione MUC (multi user chat) in cui i videobridge non sono componenti di Prosody ma sono client. Il vantaggio è notevole in quanto, diversamente da prima, non occorre modificare e riavviare i servizi Prosody e Jicofo aggiungendo un videobridge.Basta tirare su una macchina, installare il solo videobridge(2) puntarlo al nodo "master" (quello con jicofo e prosody per intenderci) e jicofo lo aggiungerà tra le risorse. 
-I videobridge comunicano ogni tot le proprie metriche e Jicofo decide dove creare le nuove conferenze. ATTENZIONE: ogni conferenza esiste SOLO su UN videobridge. Questo vuol dire che tutti i partecipanti di quella conferenza sono su un solo nodo.
+Con la nuova versione si passa ad una configurazione MUC (multi user chat) in cui i videobridge non sono componenti di Prosody ma sono client. 
+Il vantaggio è notevole in quanto, diversamente da prima, non occorre modificare e riavviare i servizi Prosody e Jicofo aggiungendo un videobridge ma è sufficiente deployare una nuova macchina, installare il solo videobridge(2) puntarlo al nodo "master" (quello con jicofo e prosody per intenderci) e jicofo lo aggiungerà tra le risorse.
+
+I videobridge comunicano ogni tot le proprie metriche e Jicofo decide dove creare le nuove conferenze.
+ATTENZIONE: ogni conferenza esiste SOLO su UN videobridge. Questo vuol dire che tutti i partecipanti di quella conferenza sono su un solo nodo.
+## Esempio di HA
+### Lato server
+ipotizziamo che sul vdb01 ci sia una conferenza con N partecipanti. Al tempo t0 vdb01 muore (o almeno viene spento il servizio). Jicofo ne avvertirà l'assenza sulla MUC e passerà l'intera conferenza sul vdb02.
+### Lato client 
+I client verranno disconnessi e apparirà un messaggio di prossima riconnessione con un contatore e una barra di avanzamento. 
+Passati alcuni secondi (circa 20) il client viene riconnesso e, uno alla volta, ricompaiono tutti i video dei partecipanti.
+ATTENZIONE: non è immediata ma converge.
 
 ## configurazione del nodo MASTER
 
